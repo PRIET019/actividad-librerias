@@ -1,19 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Button,
-  TextField,
-  Paper,
-  Typography,
-  IconButton,
-  InputAdornment,
-  FormControlLabel,
-  Checkbox,
-  Link,
-} from "@mui/material";
+import { Box, Button, TextField, Paper, Typography, IconButton, FormControlLabel, Checkbox, Link } from "@mui/material";
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
@@ -66,13 +55,6 @@ export default function Registro() {
           margin="normal"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <EmailOutlinedIcon />
-              </InputAdornment>
-            ),
-          }}
         />
 
         <TextField
@@ -81,27 +63,19 @@ export default function Registro() {
           placeholder="Enter your password"
           type={showPassword ? "text" : "password"}
           margin="normal"
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
           InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <LockOutlinedIcon />
-              </InputAdornment>
-            ),
             endAdornment: (
-              <InputAdornment position="end">
                 <IconButton onClick={() => setShowPassword(!showPassword)} >
                   {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
                 </IconButton>
-              </InputAdornment>
             ),
           }}
         />
 
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
           <FormControlLabel control={<Checkbox />} label="Remember me" />
-          <Link href="#" underline="none">
+          <Link>
             Forgot password?
           </Link>
         </Box>
@@ -113,7 +87,7 @@ export default function Registro() {
           sx={{ mt: 3, textTransform: "none", fontSize: 16 }}
           onClick={handleSignUp}
         >
-          Sign Up
+          Sign In
         </Button>
       </Paper>
     </Box>
