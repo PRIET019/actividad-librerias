@@ -10,15 +10,12 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 const users: { email: string; password: string }[] = [];
 
 export default function Registro() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [mostrarContraseña, setMostrarContraseña] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignUp = () => {
-    
-
-
+  const registrarse = () => {
     users.push({ email, password });
     console.log("Usuarios registrados:", users); 
     navigate("/home"); 
@@ -61,13 +58,13 @@ export default function Registro() {
           fullWidth
           label="Password"
           placeholder="Enter your password"
-          type={showPassword ? "text" : "password"}
+          type={mostrarContraseña ? "text" : "password"}
           margin="normal"
           onChange={(e) => setPassword(e.target.value)}
           InputProps={{
             endAdornment: (
-                <IconButton onClick={() => setShowPassword(!showPassword)} >
-                  {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
+                <IconButton onClick={() => setMostrarContraseña(!mostrarContraseña)} >
+                  {mostrarContraseña ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
                 </IconButton>
             ),
           }}
@@ -85,7 +82,7 @@ export default function Registro() {
           size="large"
           variant="contained"
           sx={{ mt: 3, textTransform: "none", fontSize: 16 }}
-          onClick={handleSignUp}
+          onClick={registrarse}
         >
           Sign In
         </Button>

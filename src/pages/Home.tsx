@@ -1,3 +1,4 @@
+import Footer from "@/componentes/Footer";
 import Header from "@/componentes/Header";
 import {
   Box,
@@ -6,10 +7,8 @@ import {
   CardContent,
   CardMedia,
   Chip,
-  Typography,
+  Typography
 } from "@mui/material";
-
-
 
 const cursos = [
   {
@@ -73,74 +72,92 @@ const cursos = [
 export default function Home() {
   return (
     <>
-    <Header />
-    <Box sx={{ p: 4, backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
-      
-      <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
-        <Chip label="Todos" color="primary" />
-        <Chip label="Programación" />
-        <Chip label="Diseño" />
-        <Chip label="Marketing" />
-        <Chip label="Fotografía" />
-        <Chip label="Productividad" />
-      </Box>
+      <Header />
 
-      <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
-        {cursos.map((curso, index) => (
-          <Card key={index} sx={{ width: 280 }}>
-            <CardMedia
-              component="img"
-              height="140"
-              image={curso.imagen}
-            />
+      <Box sx={{
+        width: "100vw",
+        backgroundColor: "#ffffff",
+        px: { xs: 2, sm: 3, md: 4, lg: 45 }, 
+        py: 4,
+        boxSizing: "border-box",
+      }}>
+        
+        
+        <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
+            <Chip label="Todos" color="primary" />
+            <Chip label="Programación" />
+            <Chip label="Diseño" />
+            <Chip label="Marketing" />
+            <Chip label="Fotografía" />
+            <Chip label="Productividad" />
+        </Box>
 
-            <CardContent>
-              <Chip
-                label={curso.categoria}
-                size="small"
-                sx={{ mb: 1 }}
-              />
+        
+        <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",              
+                sm: "repeat(2, 1fr)",   
+                md: "repeat(3, 1fr)",   
+                lg: "repeat(4, 1fr)",   
+              },
+              gap: 3,
+              
+            }}
+        >
+          {cursos.map((curso, index) => (
+            <Card key={index} sx={{ height: "100%" }}>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={curso.imagen}
+                />
 
-              <Typography variant="h6">
-                {curso.titulo}
-              </Typography>
+              <CardContent>
+                  <Chip
+                    label={curso.categoria}
+                    size="small"
+                    sx={{ mb: 1 }}
+                  />
 
-              <Typography variant="body2" color="text.secondary">
-                {curso.descripcion}
-              </Typography>
+                  <Typography variant="h6">
+                    {curso.titulo}
+                  </Typography>
 
-              <Typography variant="body2" sx={{ mt: 1 }}>
-                👁 {curso.vistas}
-              </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {curso.descripcion}
+                  </Typography>
 
+                  <Typography variant="body2" sx={{ mt: 1 }}>
+                    👁 {curso.vistas}
+                  </Typography>
+
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  sx={{ mt: 2 }}
+                >
+                  Ver Estadísticas
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
               <Button
-                fullWidth
-                variant="outlined"
-                sx={{ mt: 2 }}
-              >
-                Ver Estadísticas
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-            <Button
                 size="large"
                 variant="contained"
                 sx={{ textTransform: "none", fontSize: 16 }}
-            >
+              >
                 Cargar más contenido
-            </Button>
+              </Button>
         </Box>
 
-    </Box>
+<Footer/>
+      </Box>
+
     </>
   );
 }
-
-
-
-
-
-
