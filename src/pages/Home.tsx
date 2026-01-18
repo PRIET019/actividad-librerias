@@ -9,6 +9,7 @@ import {
   Chip,
   Typography
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const cursos = [
   {
@@ -69,7 +70,18 @@ const cursos = [
   },
 ];
 
+
+
 export default function Home() {
+
+  const navigate = useNavigate();
+
+
+
+const registrarse = () => {
+    navigate("/estadisticas");
+  };
+
   return (
     <>
       <Header />
@@ -109,6 +121,7 @@ export default function Home() {
           {cursos.map((curso, index) => (
             <Card key={index} sx={{ height: "100%" }}>
                 <CardMedia
+                onClick={registrarse}
                   component="img"
                   height="140"
                   image={curso.imagen}
@@ -137,6 +150,7 @@ export default function Home() {
                   fullWidth
                   variant="outlined"
                   sx={{ mt: 2 }}
+                  onClick={registrarse}
                 >
                   Ver Estadísticas
                 </Button>
@@ -147,6 +161,7 @@ export default function Home() {
 
         <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
               <Button
+              
                 size="large"
                 variant="contained"
                 sx={{ textTransform: "none", fontSize: 16 }}
